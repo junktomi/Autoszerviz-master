@@ -14,30 +14,21 @@ namespace Program
             set => rakomany = Math.Clamp(value, 0, 20);
         }
 
-        public TeherAuto(string rendszam, int kor, int kilometerOra, int uzemanyagSzint, int rakomany)
+        public TeherAuto(string rendszam, int kor, int kilometerOra, int uzemanyagSzint, int rakomany) : base(rendszam, kor, kilometerOra, uzemanyagSzint)
         {
-            this.Rendszam = rendszam;
-            this.Kor = kor;
-            this.KilometerOra = kilometerOra;
-            this.UzemanyagSzint = uzemanyagSzint;
+            Rakomany = rakomany;
 
         }
 
-        public virtual void InformaciotAd()
+        public override void InformaciotAd()
         {
             Console.WriteLine($"{Rendszam} - {Kor} éves jármű, {KilometerOra} km-rel, rakomány: {Rakomany} tonna.");
         }
 
-        public virtual void Szervizel(int dij)
+        public override void Szervizel(int dij)
         {
-            if (dij > 100000)
-            {
-                KilometerOra -= 10000;
-            }
-
-            AkkumulatorSzint += 20;
-            Console.WriteLine($"A {Rendszam} szervizelése megtörtént.");
-
+            Rakomany = 0;
+            base.Szervizel(dij);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Program
 {
     public class Szerviz
     {
-        private readonly List<Jarmu> jarmuvek = new List<Jarmu>();
+        List<Jarmu> jarmuvek = new List<Jarmu>();
         public void JarmuFelvetele(Jarmu jarmu)
         {
             jarmuvek.Add(jarmu);
@@ -16,7 +16,7 @@ namespace Program
 
         public void InformaciokListazasa()
         {
-            foreach (var jarmu in jarmuvek)
+            foreach (Jarmu jarmu in jarmuvek)
             {
                 jarmu.InformaciotAd();
             }
@@ -24,7 +24,7 @@ namespace Program
 
         public void CsoportosSzerviz(int dij)
         {
-            foreach (var jarmu in jarmuvek)
+            foreach (Jarmu jarmu in jarmuvek)
             {
                 if (jarmu.SzervizSzukseges)
                 {

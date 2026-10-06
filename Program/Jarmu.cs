@@ -6,12 +6,12 @@ namespace Program
 {
     public class Jarmu
     {
-        private string rendszam = "ISMERETLEN";
+        private string rendszam;
         private int kor;
         private int kilometerOra;
-        private int uzemanyagSzint;
-        public bool SzervizSzukseges => KilometerOra>=200000;
-        
+        private int uzemanyagSzint; 
+        public bool SzervizSzukseges { get => (bool)(KilometerOra >= 200000); }
+
 
 
 
@@ -49,12 +49,12 @@ namespace Program
             this.UzemanyagSzint = uzemanyagSzint;
         }
 
-        public override void InformaciotAd()
+        public virtual void InformaciotAd()
         {
             Console.WriteLine($"{Rendszam} - {Kor} éves jármű, {KilometerOra} km-rel.");
         }
 
-        public override void Szervizel(int dij)
+        public virtual void Szervizel(int dij)
         {
             if (dij > 100000)
             {

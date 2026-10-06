@@ -14,20 +14,18 @@ namespace Program
             set => akkumulatorSzint = Math.Clamp(value, 0, 100);
         }
 
-        public ElektromosAuto(string rendszam, int kor, int kilometerOra, int akkumulatorSzint)
+        public ElektromosAuto(string rendszam, int kor, int kilometerOra, int akkumulatorSzint) : base(rendszam, kor, kilometerOra, 0)
         {
-            this.Rendszam = rendszam;
-            this.Kor = kor;
-            this.KilometerOra = kilometerOra;
-            this.AkkumulatorSzint = 0;
+            UzemanyagSzint = 0;
+            AkkumulatorSzint = akkumulatorSzint;
         }
 
-        public virtual void InformaciotAd()
+        public override void InformaciotAd()
         {
             Console.WriteLine($"{Rendszam} - {Kor} éves jármű, {KilometerOra} km-rel, {AkkumulatorSzint} % töltöttséggel.");
         }
 
-        public virtual void Szervizel(int dij)
+        public override void Szervizel(int dij)
         {
             if (dij > 100000)
             {
