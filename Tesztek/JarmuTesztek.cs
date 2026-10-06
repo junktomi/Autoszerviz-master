@@ -147,6 +147,47 @@ namespace Tesztek
         }
 
         // -------------------------
+        // Taxi tesztek
+        // -------------------------
+
+        [Test]
+        public void Taxi_Utasok_KezdetiErtekHelyes()
+        {
+            Taxi auto = new Taxi("TX-123", 5, 150000, 60, 3);
+
+            Assert.That(auto.UtasokSzama, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void Taxi_Szervizel_SzervizElottKirakjaUtasokat()
+        {
+            Taxi auto = new Taxi("TX-123", 5, 200000, 60, 3);
+
+            auto.Szervizel(150000);
+
+            Assert.That(auto.UtasokSzama, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void Taxi_Szervizel_AzAlaposztalySzervizeleseIsLefut()
+        {
+            Taxi auto = new Taxi("TX-123", 5, 200000, 60, 3);
+
+            auto.Szervizel(150000);
+
+            Assert.That(auto.KilometerOra, Is.EqualTo(190000));
+            Assert.That(auto.UzemanyagSzint, Is.EqualTo(50));
+        }
+
+        [Test]
+        public void Taxi_UtasSzam_4Felett_4Lesz()
+        {
+            Taxi auto = new Taxi("TX-123", 5, 150000, 60, 6);
+
+            Assert.That(auto.UtasokSzama, Is.EqualTo(4));
+        }
+
+        // -------------------------
         // Szerviz tesztek
         // -------------------------
 
